@@ -1,14 +1,14 @@
 {
-  "name": "whatsapp-relay",
-  "version": "0.4.3",
-  "description": "Link a local WhatsApp account to Codex, manage chats, and control Codex from allowed WhatsApp numbers.",
-  "install_url": "https://raw.githubusercontent.com/abuiles/codex-whatsapp-relay/refs/heads/main/plugins/whatsapp-relay/.codex-plugin/plugin.json",
+  "name": "whatsapp-readonly",
+  "version": "0.1.0",
+  "description": "Consult a local WhatsApp message cache without sending or mutating conversations.",
+  "install_url": "https://raw.githubusercontent.com/qifbox/codex-whatsapp/refs/heads/main/plugins/whatsapp-relay/.codex-plugin/plugin.json",
   "author": {
     "name": "Adolfo Builes",
     "url": "https://github.com/abuiles"
   },
-  "homepage": "https://github.com/abuiles/codex-whatsapp-relay",
-  "repository": "https://github.com/abuiles/codex-whatsapp-relay",
+  "homepage": "https://github.com/qifbox/codex-whatsapp",
+  "repository": "https://github.com/qifbox/codex-whatsapp",
   "license": "MIT",
   "keywords": [
     "whatsapp",
@@ -21,22 +21,21 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "WhatsApp Relay",
-    "shortDescription": "Put Codex in your WhatsApp",
-    "longDescription": "Link a local WhatsApp account to Codex with a QR code, inspect chats and send messages through MCP, and optionally turn an allowed direct chat into a persistent Codex session over codex app-server.",
+    "shortDescription": "Read WhatsApp cache safely",
+    "longDescription": "Inspect a local WhatsApp cache, review recent messages and flag conversations that may need human attention. This plugin never sends, edits, deletes or marks messages as read.",
     "developerName": "Adolfo Builes",
     "category": "Tools & Integrations",
     "capabilities": [
-      "Interactive",
-      "Write"
+      "Read"
     ],
     "websiteURL": "https://github.com/abuiles/codex-whatsapp-relay-plugin",
     "privacyPolicyURL": "https://www.whatsapp.com/legal/privacy-policy",
     "termsOfServiceURL": "https://www.whatsapp.com/legal/terms-of-service",
     "defaultPrompt": [
-      "Link my WhatsApp account and verify the auth status",
-      "Show my recent WhatsApp chats and unread conversations",
-      "Send a WhatsApp message to a contact or group from Codex",
-      "Allow my phone number and start WhatsApp Relay so I can control Codex from WhatsApp"
+      "Show the local WhatsApp cache status",
+      "List recent WhatsApp chats and unread conversations",
+      "Read cached messages without changing read state",
+      "Flag conversations that may need human review"
     ],
     "brandColor": "#25D366",
     "composerIcon": "./assets/whatsapp-manager-small.svg",
