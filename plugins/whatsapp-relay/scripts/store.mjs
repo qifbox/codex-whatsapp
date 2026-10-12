@@ -405,6 +405,19 @@ export class WhatsAppStore {
     return (this.data.messages[chatId] ?? []).length;
   }
 
+  pendingReview({ limit = 20 } = {}) {
+    return this.listChats({ limit: 1000 })
+      .filter((chat) => (this.data.messages[chat.id] ?? []).some((message) => !message.fromMe))
+      .map((chat) => {
+        const messages = this.data.messages[chat.id] ?? [];
+        const latest = messages[messages.length - 1] ?? null;
+        const latestFromMe = latest?.fromMe === true;
+        return { chat, reason: latestFromMe ? "needs_context_review" : "received_without_observed_reply", latestMessage: latest };
+      })
+      .filter((item) => item.reason === "received_without_observed_reply")
+      .slice(0, limit);
+  }
+
   getOldestMessage(chatId) {
     const messages = this.data.messages[chatId] ?? [];
     if (!messages.length) {

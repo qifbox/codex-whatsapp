@@ -192,6 +192,15 @@ export class WhatsAppRuntime {
     return this.startPromise;
   }
 
+  async startPassive() {
+    if (!this.hasSavedCreds()) {
+      this.state.status = "not_authenticated";
+      this.store.updateMeta({ dataFreshness: "not_connected", lastSync: null });
+      return null;
+    }
+    return this.start({ printQrToTerminal: false });
+  }
+
   async #startInternal({ printQrToTerminal }) {
     await this.initialize();
     const { state, saveCreds } = await useMultiFileAuthState(authDir);
